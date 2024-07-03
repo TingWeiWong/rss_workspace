@@ -42,6 +42,9 @@ connect-smb() {
     printenv ROS_IP
 }
 EOF
+## Example: define ROS_MASTER_URI and ROS_IP for connecting to SMB 263
+## The ip address of every SMB is 10.0.x.5 where x is the last digit of SMB Robot Number. Example: For SMB 263 the on-board computer IP address is 10.0.3.5
+setup_alias_in_shell "connect-smb262" "export ROS_MASTER_URI=http://10.0.2.5:11311 && export ROS_IP=$(hostname -I | awk '{print $1}')"
 
 # Catkin build memory & job limit
 setup_alias_in_shell "build-limit" "catkin build --jobs 8 --mem-limit 70%"
